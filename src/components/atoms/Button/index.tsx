@@ -26,9 +26,10 @@ const Button: React.FC<IProps> = ({
   type = ButtonType.BUTTON,
   size = ButtonSize.MEDIUM,
   onClick,
+  className,
   children,
 }) => {
-  const classProps = classNames(styles.default, styles[size])
+  const classProps = classNames(styles.default, styles[size], className)
   const event = {
     onClick,
   }
