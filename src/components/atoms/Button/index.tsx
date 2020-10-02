@@ -24,6 +24,7 @@ interface IProps {
   type?: ButtonType
   size?: ButtonSize
   theme?: ButtonTheme
+  disabled?: boolean
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -35,6 +36,18 @@ const DEFAULT_STYLE = css`
   margin: 0;
   font-size: 14px;
   border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
+
+  &:disabled {
+    color: #3d3d3d;
+    border-color: #3d3d3d;
+    background-color: #e3e3e3;
+    cursor: not-allowed;
+  }
 `
 const SIZE = {
   [ButtonSize.SMALL]: css`
@@ -70,6 +83,7 @@ const Button: React.FC<IProps> = ({
   type = ButtonType.BUTTON,
   size = ButtonSize.MEDIUM,
   theme = ButtonTheme.DEFAULT,
+  disabled = false,
   className,
   onClick,
   children,
@@ -80,9 +94,10 @@ const Button: React.FC<IProps> = ({
   return (
     <button
       type={type}
-      {...event}
+      disabled={disabled}
       className={className}
       css={[DEFAULT_STYLE, SIZE[size], THEME[theme]]}
+      {...event}
     >
       {children}
     </button>
