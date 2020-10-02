@@ -1,7 +1,6 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import React from 'react'
-import classNames from 'classnames'
-
-import styles from './style.module.scss'
 
 export enum InputType {
   TEXT = 'text',
@@ -17,6 +16,29 @@ export enum InputSize {
   LARGE = 'large',
 }
 
+const DEFAULT_STYLE = css`
+  outline: 0;
+  border: 1px solid #3d3d3d;
+  border-radius: 2px;
+
+  &::placeholder {
+    color: #6b6b6b;
+  }
+`
+const SIZE = {
+  [InputSize.SMALL]: css`
+    padding: 0 7px;
+  `,
+  [InputSize.MEDIUM]: css`
+    padding: 4px 11px;
+    font-size: 14px;
+  `,
+  [InputSize.LARGE]: css`
+    padding: 7px 11px;
+    font-size: 16px;
+  `,
+}
+
 interface IProps {
   type?: InputType
   size?: InputSize
@@ -29,10 +51,9 @@ const Input: React.FC<IProps> = ({
   type = InputType.TEXT,
   size = InputSize.MEDIUM,
   placeholder,
-  onChange,
   className,
+  onChange,
 }) => {
-  const classProps = classNames(styles.default, styles[size], className)
   const event = {
     onChange,
   }
@@ -40,7 +61,8 @@ const Input: React.FC<IProps> = ({
     <input
       type={type}
       placeholder={placeholder}
-      className={classProps}
+      className={className}
+      css={[DEFAULT_STYLE, SIZE[size]]}
       {...event}
     />
   )
