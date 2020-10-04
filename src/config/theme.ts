@@ -1,6 +1,10 @@
+import { NonFunctionProperties } from '../utils/type'
 import { BLUE, GRAY, WHITE } from './color'
 
 export type Theme = {
+  base: {
+    radius: string
+  }
   color: {
     primary: string
     primaryText: string
@@ -11,6 +15,12 @@ export type Theme = {
     text: string
   }
 }
+export type StyledProps<P> = (
+  | NonFunctionProperties<Required<P>>
+  | Partial<P>
+) & {
+  theme: Theme
+}
 
 export type Base = {
   radius: string
@@ -20,7 +30,14 @@ const base: Base = {
   radius: '4px',
 }
 
+const baseTheme: Pick<Theme, 'base'> = {
+  base: {
+    radius: '4px',
+  },
+}
+
 const lightTheme: Theme = {
+  ...baseTheme,
   color: {
     primary: BLUE[600],
     primaryText: WHITE,
@@ -33,6 +50,7 @@ const lightTheme: Theme = {
 }
 
 const darkTheme: Theme = {
+  ...baseTheme,
   color: {
     primary: BLUE[500],
     primaryText: WHITE,
