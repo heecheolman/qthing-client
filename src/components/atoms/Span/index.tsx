@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
 import React from 'react'
+import { Theme } from '../../../config/theme'
 
 interface IProps {
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
@@ -18,12 +20,15 @@ const Span: React.FC<IProps> = ({
   className,
   children,
 }) => {
+  const appTheme = useTheme<Theme>()
+
   return (
     <span
       className={className}
       css={[
         DEFAULT_STYLE,
         css`
+          color: ${appTheme.color.text};
           font-size: ${fontSize}px;
           font-weight: ${fontWeight};
         `,

@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
 import React from 'react'
+import { GRAY } from '../../../config/color'
+import { base, Theme } from '../../../config/theme'
 
 export enum InputType {
   TEXT = 'text',
@@ -16,39 +19,46 @@ export enum InputSize {
   LARGE = 'large',
 }
 
-const DEFAULT_STYLE = css`
+const DEFAULT_STYLE = (props: Theme) => css`
   outline: 0;
-  border: 1px solid #3d3d3d;
-  border-radius: 2px;
+  border: 1px solid ${props.color.border};
+  border-radius: ${base.radius};
+  color: ${props.color.text};
   box-sizing: border-box;
   position: relative;
   width: 100%;
   min-width: 0;
   line-height: 1.5;
+  transition: 0.2s ease-out;
+  background-color: ${props.color.background};
 
   &::placeholder {
-    color: #6b6b6b;
+    color: ${GRAY[400]};
   }
   &:disabled {
-    background-color: #e3e3e3;
+    border-color: ${GRAY[200]};
+    background-color: ${props.color.disabledBackground};
     cursor: not-allowed;
   }
   &:focus {
-    border-color: #4169e1;
+    border-color: ${props.color.primary};
   }
 `
 const SIZE = {
   [InputSize.SMALL]: css`
     padding: 0 7px;
     font-size: 14px;
+    height: 24px;
   `,
   [InputSize.MEDIUM]: css`
-    padding: 4px 11px;
+    padding: 0px 11px;
+    height: 32px;
     font-size: 14px;
   `,
   [InputSize.LARGE]: css`
     padding: 7px 11px;
     font-size: 16px;
+    height: 40px;
   `,
 }
 
@@ -69,6 +79,7 @@ const Input: React.FC<IProps> = ({
   className,
   onChange,
 }) => {
+  const appTheme = useTheme<Theme>()
   const event = {
     onChange,
   }
@@ -78,7 +89,7 @@ const Input: React.FC<IProps> = ({
       disabled={disabled}
       placeholder={placeholder}
       className={className}
-      css={[DEFAULT_STYLE, SIZE[size]]}
+      css={[DEFAULT_STYLE(appTheme), SIZE[size]]}
       {...event}
     />
   )

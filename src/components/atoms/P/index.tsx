@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
 import React from 'react'
+import { Theme } from '../../../config/theme'
 
 export enum TextAlign {
   LEFT = 'left',
@@ -50,6 +52,7 @@ const P: React.FC<IProps> = ({
   className,
   children,
 }) => {
+  const appTheme = useTheme<Theme>()
   const ellipsisStyle = css`
     white-space: ${ellipsis ? WhiteSpace.NOWRAP : whiteSpace};
     text-overflow: ${ellipsis ? 'ellipsis' : 'clip'};
@@ -60,6 +63,7 @@ const P: React.FC<IProps> = ({
       css={[
         DEFAULT_STYLE,
         css`
+          color: ${appTheme.color.text};
           ${ellipsisStyle}
           text-align: ${textAlign};
           font-size: ${fontSize}px;
