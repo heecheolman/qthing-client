@@ -1,5 +1,4 @@
-import { NonFunctionProperties } from '../utils/type'
-import { BLUE, GRAY, WHITE } from './color'
+import { colors } from './colors'
 
 export type Theme = {
   base: {
@@ -15,20 +14,10 @@ export type Theme = {
     text: string
   }
 }
-export type StyledProps<P> = (
-  | NonFunctionProperties<Required<P>>
-  | Partial<P>
-) & {
+export type ThemeProps = {
   theme: Theme
 }
-
-export type Base = {
-  radius: string
-}
-
-const base: Base = {
-  radius: '4px',
-}
+export type StyledProps<T, U extends keyof T> = Pick<T, U> & ThemeProps
 
 const baseTheme: Pick<Theme, 'base'> = {
   base: {
@@ -39,27 +28,27 @@ const baseTheme: Pick<Theme, 'base'> = {
 const lightTheme: Theme = {
   ...baseTheme,
   color: {
-    primary: BLUE[600],
-    primaryText: WHITE,
-    border: GRAY[200],
-    background: WHITE,
-    disabledBackground: GRAY[100],
-    disabledBorder: GRAY[200],
-    text: GRAY[800],
+    primary: colors.blue[600],
+    primaryText: colors.white,
+    border: colors.gray[200],
+    background: colors.white,
+    disabledBackground: colors.gray[100],
+    disabledBorder: colors.gray[200],
+    text: colors.gray[800],
   },
 }
 
 const darkTheme: Theme = {
   ...baseTheme,
   color: {
-    primary: BLUE[500],
-    primaryText: WHITE,
-    border: GRAY[100],
-    background: GRAY[900],
-    disabledBackground: GRAY[700],
-    disabledBorder: GRAY[600],
-    text: GRAY[100],
+    primary: colors.blue[500],
+    primaryText: colors.white,
+    border: colors.gray[100],
+    background: colors.gray[900],
+    disabledBackground: colors.gray[700],
+    disabledBorder: colors.gray[600],
+    text: colors.gray[100],
   },
 }
 
-export { base, lightTheme, darkTheme }
+export { lightTheme, darkTheme }

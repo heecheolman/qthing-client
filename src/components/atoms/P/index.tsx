@@ -49,10 +49,10 @@ const P: React.FC<IProps> = ({
   lineHeight = 1.5,
   whiteSpace = WhiteSpace.NORMAL,
   wordBreak = WordBreak.NORMAL,
-  className,
   children,
+  ...props
 }) => {
-  const appTheme = useTheme<Theme>()
+  const theme = useTheme<Theme>()
   const ellipsisStyle = css`
     white-space: ${ellipsis ? WhiteSpace.NOWRAP : whiteSpace};
     text-overflow: ${ellipsis ? 'ellipsis' : 'clip'};
@@ -63,7 +63,7 @@ const P: React.FC<IProps> = ({
       css={[
         DEFAULT_STYLE,
         css`
-          color: ${appTheme.color.text};
+          color: ${theme.color.text};
           ${ellipsisStyle}
           text-align: ${textAlign};
           font-size: ${fontSize}px;
@@ -72,7 +72,7 @@ const P: React.FC<IProps> = ({
           word-break: ${wordBreak};
         `,
       ]}
-      className={className}
+      {...props}
     >
       {children}
     </p>

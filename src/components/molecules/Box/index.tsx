@@ -106,15 +106,14 @@ const Box: React.FC<IProps> = ({
   justifyContent = JustifyContent.NORMAL,
   alignItems = AlignItems.NORMAL,
   direction = Direction.ROW,
-  className,
   children,
+  ...props
 }) => {
   const isFlexBox =
     display === DisplayType.FLEX || display === DisplayType.INLINE_FLEX
 
   return (
     <div
-      className={className}
       css={[
         DISPLAY_TYPE[display],
         isFlexBox && [
@@ -123,6 +122,7 @@ const Box: React.FC<IProps> = ({
           ALIGN_ITEMS[alignItems],
         ],
       ]}
+      {...props}
     >
       {children}
     </div>

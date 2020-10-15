@@ -17,22 +17,22 @@ const DEFAULT_STYLE = css`
 const Span: React.FC<IProps> = ({
   fontSize = 14,
   fontWeight = 400,
-  className,
   children,
+  ...props
 }) => {
-  const appTheme = useTheme<Theme>()
+  const theme = useTheme<Theme>()
 
   return (
     <span
-      className={className}
       css={[
         DEFAULT_STYLE,
         css`
-          color: ${appTheme.color.text};
+          color: ${theme.color.text};
           font-size: ${fontSize}px;
           font-weight: ${fontWeight};
         `,
       ]}
+      {...props}
     >
       {children}
     </span>

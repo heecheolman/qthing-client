@@ -1,39 +1,42 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled/macro'
+
 import React from 'react'
-import { GRAY, WHITE } from '../../../config/color'
-import { base, StyledProps } from '../../../config/theme'
+import { colors } from '../../../config/colors'
+import { StyledProps, ThemeProps } from '../../../config/theme'
 
-const CheckboxContent = styled.span`
-  box-sizing: border-box;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: ${base.radius};
-  transition: 0.05s ease-out;
-
-  &:after {
+const CheckboxContent = styled.span<ThemeProps>(({ theme }) => {
+  return css`
     box-sizing: border-box;
-    width: 40%;
-    height: 60%;
-    position: absolute;
-    border-width: 2px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-width: 1px;
     border-style: solid;
-    border-top: 0;
-    border-left: 0;
-    border-color: transparent;
-    transform: rotate(45deg) translate(-20%, -10%);
-    opacity: 1;
-    content: ' ';
-    transition: 0.2s ease-out;
-  }
-`
+    border-radius: ${theme.base.radius};
+    transition: 0.05s ease-out;
+
+    &:after {
+      box-sizing: border-box;
+      width: 40%;
+      height: 60%;
+      position: absolute;
+      border-width: 2px;
+      border-style: solid;
+      border-top: 0;
+      border-left: 0;
+      border-color: transparent;
+      transform: rotate(45deg) translate(-20%, -10%);
+      opacity: 1;
+      content: ' ';
+      transition: 0.2s ease-out;
+    }
+  `
+})
 
 const HiddenInput = styled.input`
   margin: 0;
@@ -45,44 +48,46 @@ const HiddenInput = styled.input`
   cursor: inherit;
 `
 
-const StyledLabel = styled.label<StyledProps<IProps>>((props) => {
-  const { disabled } = props
-  const CheckboxContentStyle = disabled
-    ? css`
-        background-color: ${props.theme.color.disabledBackground};
-        &:after {
-          border-color: ${props.checked ? GRAY[300] : 'transparent'};
-        }
-      `
-    : css`
-        border-color: ${props.checked
-          ? props.theme.color.primary
-          : props.theme.color.border};
-        background-color: ${props.checked
-          ? props.theme.color.primary
-          : 'transparent'};
-        &:after {
-          border-color: ${props.checked ? WHITE : 'transparent'};
-        }
-      `
+const StyledLabel = styled.label<StyledProps<IProps, 'checked' | 'disabled'>>(
+  (props) => {
+    const { theme } = props
+    const CheckboxContentStyle = props.disabled
+      ? css`
+          background-color: ${theme.color.disabledBackground};
+          &:after {
+            border-color: ${props.checked ? colors.gray[300] : 'transparent'};
+          }
+        `
+      : css`
+          border-color: ${props.checked
+            ? theme.color.primary
+            : theme.color.border};
+          background-color: ${props.checked
+            ? theme.color.primary
+            : 'transparent'};
+          &:after {
+            border-color: ${props.checked ? colors.white : 'transparent'};
+          }
+        `
 
-  return css`
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    cursor: ${disabled ? 'not-allowed' : 'pointer'};
+    return css`
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      cursor: ${props.disabled ? 'not-allowed' : 'pointer'};
 
-    > ${CheckboxContent} {
-      border-color: ${props.theme.color.border};
-      ${CheckboxContentStyle}
-    }
-  `
-})
+      > ${CheckboxContent} {
+        border-color: ${theme.color.border};
+        ${CheckboxContentStyle}
+      }
+    `
+  },
+)
 
-const StyledText = styled.span<StyledProps<IProps>>((props) => {
+const StyledText = styled.span<ThemeProps>(({ theme }) => {
   return css`
     font-size: 14px;
-    color: ${props.theme.color.text};
+    color: ${theme.color.text};
     padding: 0 4px;
   `
 })
