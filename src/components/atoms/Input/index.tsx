@@ -62,11 +62,12 @@ const SIZE = {
   `,
 }
 
-interface IProps extends HTMLAttributes<HTMLInputElement> {
+interface IProps {
   type?: InputType
   size?: InputSize
   disabled?: boolean
   placeholder?: string
+  value?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -75,20 +76,15 @@ const Input: React.FC<IProps> = ({
   size = InputSize.MEDIUM,
   disabled = false,
   placeholder,
-  onChange,
   ...props
 }) => {
   const theme = useTheme<Theme>()
-  const event = {
-    onChange,
-  }
   return (
     <input
       type={type}
       disabled={disabled}
       placeholder={placeholder}
       css={[DEFAULT_STYLE(theme), SIZE[size]]}
-      {...event}
       {...props}
     />
   )
