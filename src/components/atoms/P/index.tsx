@@ -8,6 +8,7 @@ export enum TextAlign {
   LEFT = 'left',
   CENTER = 'center',
   RIGHT = 'right',
+  JUSTIFY = 'justify',
 }
 
 export enum WhiteSpace {
@@ -38,7 +39,6 @@ interface IProps {
   lineHeight?: number
   whiteSpace?: WhiteSpace
   wordBreak?: WordBreak
-  className?: string
 }
 
 const P: React.FC<IProps> = ({
