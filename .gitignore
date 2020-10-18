@@ -27,3 +27,7 @@ yarn-error.log*
 
 # IntelliJ
 .idea
+
+# Build Storybook
+/storybook-static
+build-storybook.log

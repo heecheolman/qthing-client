@@ -65,6 +65,7 @@
     "@types/redux": "^3.6.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-emotion": "^10.0.33",
+    "chromatic": "^5.2.0",
     "react-is": "^16.13.1"
   }
 }
