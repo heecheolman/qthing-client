@@ -24,7 +24,6 @@ const CheckboxContent = styled.span<ThemeProps>(({ theme }) => {
       box-sizing: border-box;
       width: 40%;
       height: 60%;
-      position: absolute;
       border-width: 2px;
       border-style: solid;
       border-top: 0;
