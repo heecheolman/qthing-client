@@ -45,8 +45,8 @@ const VARIANTS = {
 
     &:hover {
       &:not(:disabled) {
-        border-color: ${colors.blue[500]};
-        color: ${colors.blue[500]};
+        border-color: ${colors.blue[6]};
+        color: ${colors.blue[6]};
       }
     }
   `,
@@ -57,8 +57,8 @@ const VARIANTS = {
 
     &:hover {
       &:not(:disabled) {
-        background-color: ${colors.blue[800]};
-        border-color: ${colors.blue[800]};
+        background-color: ${colors.blue[6]};
+        border-color: ${colors.blue[6]};
       }
     }
   `,
@@ -68,18 +68,18 @@ const VARIANTS = {
 
     &:hover {
       &:not(:disabled) {
-        background-color: ${colors.gray[100]};
+        background-color: ${colors.gray[1]};
       }
     }
   `,
   [ButtonVariant.FLAT]: (theme: Theme) => css`
-    background-color: ${colors.blue[100]};
-    color: ${colors.blue[800]};
+    background-color: ${colors.blue[0]};
+    color: ${colors.blue[7]};
 
     &:hover {
       &:not(:disabled) {
-        background-color: ${colors.blue[200]};
-        color: ${colors.blue[800]};
+        background-color: ${colors.blue[1]};
+        color: ${colors.blue[8]};
       }
     }
   `,
@@ -102,7 +102,7 @@ const DEFAULT_STYLE = (theme: Theme) => css`
   transition: 0.1s ease-out;
 
   &:disabled {
-    color: ${colors.gray[500]};
+    color: ${colors.gray[5]};
     border-color: ${theme.color.disabledBorder};
     background-color: ${theme.color.disabledBackground};
     cursor: not-allowed;

@@ -33,10 +33,10 @@ const DEFAULT_STYLE = (props: Theme) => css`
   background-color: ${props.color.background};
 
   &::placeholder {
-    color: ${colors.gray[400]};
+    color: ${colors.gray[4]};
   }
   &:disabled {
-    border-color: ${colors.gray[200]};
+    border-color: ${colors.gray[2]};
     background-color: ${props.color.disabledBackground};
     cursor: not-allowed;
   }

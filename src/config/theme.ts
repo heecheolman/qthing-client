@@ -30,26 +30,26 @@ const baseTheme: Pick<Theme, 'base'> = {
 const lightTheme: Theme = {
   ...baseTheme,
   color: {
-    primary: colors.blue[700],
+    primary: colors.blue[5],
     primaryText: colors.white,
-    border: colors.gray[200],
+    border: colors.gray[3],
     background: colors.white,
-    disabledBackground: colors.gray[100],
-    disabledBorder: colors.gray[200],
-    text: colors.gray[800],
+    disabledBackground: colors.gray[2],
+    disabledBorder: colors.gray[2],
+    text: colors.gray[7],
   },
 }
 
 const darkTheme: Theme = {
   ...baseTheme,
   color: {
-    primary: colors.blue[500],
+    primary: colors.blue[5],
     primaryText: colors.white,
-    border: colors.gray[100],
-    background: colors.gray[900],
-    disabledBackground: colors.gray[700],
-    disabledBorder: colors.gray[600],
-    text: colors.gray[100],
+    border: colors.gray[1],
+    background: colors.gray[9],
+    disabledBackground: colors.gray[7],
+    disabledBorder: colors.gray[6],
+    text: colors.gray[1],
   },
 }
 

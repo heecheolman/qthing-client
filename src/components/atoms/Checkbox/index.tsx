@@ -54,7 +54,7 @@ const StyledLabel = styled.label<StyledProps<IProps, 'checked' | 'disabled'>>(
       ? css`
           background-color: ${theme.color.disabledBackground};
           &:after {
-            border-color: ${props.checked ? colors.gray[300] : 'transparent'};
+            border-color: ${props.checked ? colors.gray[3] : 'transparent'};
           }
         `
       : css`

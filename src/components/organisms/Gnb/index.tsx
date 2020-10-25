@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import React from 'react'
-import Button, { ButtonSize, ButtonVariant } from '../../atoms/Button'
+import Button, { ButtonVariant } from '../../atoms/Button'
 import Box, {
   AlignItems,
   DisplayType,
@@ -15,7 +15,7 @@ const GNB_STYLE = css`
   position: fixed;
   top: 0;
   background-color: ${colors.white};
-  border-bottom: 1px solid ${colors.gray[100]};
+  border-bottom: 1px solid ${colors.gray[1]};
 `
 
 const INNER_GNB_STYLE = css`
