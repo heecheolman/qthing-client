@@ -47,17 +47,17 @@ const DEFAULT_STYLE = (props: Theme) => css`
 const SIZE = {
   [InputSize.SMALL]: css`
     padding: 0 7px;
-    font-size: 14px;
+    font-size: 11px;
     height: 24px;
   `,
   [InputSize.MEDIUM]: css`
     padding: 0px 11px;
     height: 32px;
-    font-size: 14px;
+    font-size: 13px;
   `,
   [InputSize.LARGE]: css`
     padding: 7px 11px;
-    font-size: 16px;
+    font-size: 15px;
     height: 40px;
   `,
 }

@@ -43,7 +43,7 @@ interface IProps {
 
 const P: React.FC<IProps> = ({
   textAlign = TextAlign.LEFT,
-  fontSize = 14,
+  fontSize = 13,
   fontWeight = 400,
   ellipsis = false,
   lineHeight = 1.5,

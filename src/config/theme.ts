@@ -3,6 +3,7 @@ import { colors } from './colors'
 export type Theme = {
   base: {
     radius: string
+    fontSize: string
   }
   color: {
     primary: string
@@ -21,14 +22,15 @@ export type StyledProps<T, U extends keyof T> = Pick<T, U> & ThemeProps
 
 const baseTheme: Pick<Theme, 'base'> = {
   base: {
-    radius: '4px',
+    radius: '8px',
+    fontSize: '13px',
   },
 }
 
 const lightTheme: Theme = {
   ...baseTheme,
   color: {
-    primary: colors.blue[600],
+    primary: colors.blue[700],
     primaryText: colors.white,
     border: colors.gray[200],
     background: colors.white,

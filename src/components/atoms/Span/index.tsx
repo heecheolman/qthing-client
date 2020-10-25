@@ -14,7 +14,7 @@ const DEFAULT_STYLE = css`
 `
 
 const Span: React.FC<IProps> = ({
-  fontSize = 14,
+  fontSize = 13,
   fontWeight = 400,
   children,
   ...props

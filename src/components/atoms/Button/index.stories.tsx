@@ -17,7 +17,12 @@ export default {
     variant: {
       control: {
         type: 'radio',
-        options: [ButtonVariant.DEFAULT, ButtonVariant.PRIMARY],
+        options: [
+          ButtonVariant.DEFAULT,
+          ButtonVariant.PRIMARY,
+          ButtonVariant.TEXT,
+          ButtonVariant.FLAT,
+        ],
       },
     },
   },
@@ -41,6 +46,22 @@ Disabled.args = {
 export const Primary = Template.bind({})
 Primary.args = {
   variant: ButtonVariant.PRIMARY,
+  size: ButtonSize.MEDIUM,
+  disabled: false,
+  children: '버튼',
+}
+
+export const Flat = Template.bind({})
+Flat.args = {
+  variant: ButtonVariant.FLAT,
+  size: ButtonSize.MEDIUM,
+  disabled: false,
+  children: '버튼',
+}
+
+export const Text = Template.bind({})
+Text.args = {
+  variant: ButtonVariant.TEXT,
   size: ButtonSize.MEDIUM,
   disabled: false,
   children: '버튼',

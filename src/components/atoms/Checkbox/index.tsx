@@ -17,7 +17,7 @@ const CheckboxContent = styled.span<ThemeProps>(({ theme }) => {
     height: 18px;
     border-width: 1px;
     border-style: solid;
-    border-radius: ${theme.base.radius};
+    border-radius: 4px;
     transition: 0.05s ease-out;
 
     &:after {
@@ -85,7 +85,7 @@ const StyledLabel = styled.label<StyledProps<IProps, 'checked' | 'disabled'>>(
 
 const StyledText = styled.span<ThemeProps>(({ theme }) => {
   return css`
-    font-size: 14px;
+    font-size: ${theme.base.fontSize};
     color: ${theme.color.text};
     padding: 0 4px;
   `

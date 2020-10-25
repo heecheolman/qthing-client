@@ -43,10 +43,10 @@ const HIDDEN_RADIO_STYLE = css`
   display: none;
 `
 
-const RadioBox = styled.div<ThemeProps>((props) => {
+const RadioBox = styled.div<ThemeProps>(({ theme }) => {
   return css`
     display: inline-flex;
-    font-size: 14px;
+    font-size: ${theme.base.fontSize};
     align-items: center;
     justify-content: center;
   `
@@ -54,7 +54,7 @@ const RadioBox = styled.div<ThemeProps>((props) => {
 
 const StyledText = styled.span<ThemeProps>(({ theme }) => {
   return css`
-    font-size: 14px;
+    font-size: ${theme.base.fontSize};
     color: ${theme.color.text};
     padding: 0 4px;
   `
